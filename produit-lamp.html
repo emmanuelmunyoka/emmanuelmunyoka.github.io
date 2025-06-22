@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp - Détail produit</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fff;
+            color: #222;
+            margin: 0;
+        }
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .product-image {
+            width: 100%;
+            display: block;
+            border-radius: 0;
+        }
+        .zoom-icon {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #fff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+        .breadcrumb {
+            color: #888;
+            font-size: 0.93rem;
+            margin: 18px 0 10px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .product-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 0 8px 0;
+        }
+        .product-title-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: -0.5px;
+            color: #1a1a1a;
+        }
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #e63946;
+            letter-spacing: -0.5px;
+            padding: 4px 8px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .product-icons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .product-icons i {
+            font-size: 1.2rem;
+            color: #222;
+            cursor: pointer;
+        }
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 28px 0 10px 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+        @media (max-width: 700px) {
+            .product-header, .breadcrumb, .section-title {
+                max-width: 100%;
+                padding: 0 12px;
+            }
+            .product-image-container {
+                max-width: 100vw;
+            }
+            .product-title {
+                font-size: 1.1rem;
+            }
+            .product-price {
+                font-size: 1rem;
+            }
+            .zoom-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+        .size-options{
+            display: flex;
+            justify-content: center;
+        }
+        .size-selection {
+            margin-top: 20px;
+        }
+        .size-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .size-options {
+            display: flex;
+            gap: 10px;
+        }
+        .size-button {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            color: #222;
+        }
+        .size-button.selected {
+            border-color: black;
+            border-width: 2px;
+        }
+        .product-description {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+        .product-description p {
+            margin-left: 20px;
+            line-height: 1.6;
+        }
+        #envoyer {
+            display: block;
+            margin: 30px auto 0 auto;
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            background: #1a1a2e;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+        #envoyer:hover {
+            background: #e63946;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-image-container">
+        <img src="" alt="Produit" class="product-image" id="productImage">
+        <span class="zoom-icon"><i class="fas fa-search"></i></span>
+    </div>
+    <div class="breadcrumb" id="page"></div>
+    <div class="product-header">
+        <div class="product-title-price">
+            <span class="product-title">Lamp</span>
+            <span class="product-price"></span>
+        </div>
+        <div class="product-icons">
+            <i class="fas fa-paper-plane"></i>
+            <i class="far fa-bookmark"></i>
+        </div>
+    </div>
+    <div class="section-title">Taille</div>
+    <div class="size-selection">
+        <div class="size-options" id="sizeOptions">
+            <button class="size-button">XS</button>
+            <button class="size-button">S</button>
+            <button class="size-button selected">M</button>
+            <button class="size-button">L</button>
+            <button class="size-button">XL</button>
+            <button class="size-button">XXL</button>
+        </div>
+    </div>
+    <div class="section-title">Description</div>
+    <div class="product-description">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+    </div>
+    <button id="envoyer">envoyer</button>
+    <script>
+        function getParam(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+
+        const titre = document.querySelector('.product-title');
+        const prix = document.querySelector('.product-price');
+        const page = document.getElementById('page');
+        const envoyer = document.getElementById('envoyer');
+        const productImage = document.getElementById('productImage');
+        const sizeOptions = document.getElementById('sizeOptions');
+        let selectedSize = 'M'; // Valeur par défaut
+
+        // Gestion de la sélection de taille
+        sizeOptions.querySelectorAll('.size-button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                sizeOptions.querySelectorAll('.size-button').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedSize = this.textContent;
+            });
+        });
+
+        // Récupérer et afficher le nom et le prix depuis le localStorage
+        titre.innerText = localStorage.getItem('nom') || 'Nom inconnu';
+        prix.innerText = localStorage.getItem('prix') || 'Prix inconnu';
+        
+        // Récupérer et afficher l'image depuis le localStorage
+        const imageUrl = localStorage.getItem('imageUrl');
+        if (imageUrl) {
+            productImage.src = imageUrl;
+        }
+        
+        // Mettre à jour le fil d'Ariane
+        page.textContent = `Accueil > Produits > Détails > ${localStorage.getItem('nom')} (${localStorage.getItem('prix')})`;
+        
+        envoyer.addEventListener('click', async () => {
+            try {
+                // Afficher un message de chargement
+                envoyer.textContent = 'Envoi en cours...';
+                envoyer.disabled = true;
+                
+                const response = await fetch('http://localhost:1200/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: titre.innerText,
+                        message: prix.innerText,
+                        taille: selectedSize
+                    })
+                });
+                
+                if (response.ok) {
+                    const result = await response.text();
+                    console.log('Succès:', result);
+                    alert('Email envoyé avec succès !');
+                } else {
+                    const errorText = await response.text();
+                    console.error('Erreur serveur:', errorText);
+                    alert('Erreur lors de l\'envoi: ' + errorText);
+                }
+            } catch (error) {
+                console.error('Erreur réseau:', error);
+                alert('Erreur de connexion au serveur. Vérifiez que le serveur est démarré sur le port 1200.');
+            } finally {
+                // Restaurer le bouton
+                envoyer.textContent = 'envoyer';
+                envoyer.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html> 
