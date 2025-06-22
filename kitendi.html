@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitendi Couture</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fff;
+            color: #222;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 32px 0 32px;
+            background: #fff;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-right: auto;
+        }
+        .logo img {
+            height: 28px;
+            margin-right: 10px;
+        }
+        .menu-icon {
+            font-size: 1.7rem;
+            margin-right: 18px;
+            cursor: pointer;
+        }
+        .search-icon {
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 0 32px 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 16px;
+            margin-top: 16px;
+        }
+        .full {
+            grid-column: 1 / 3;
+        }
+        .section {
+            position: relative;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            min-height: 120px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        .section img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        .section .overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.35);
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+        }
+        .section .title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 18px 24px;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+        .section.greyed {
+            filter: grayscale(1);
+            opacity: 0.7;
+        }
+        .qui {
+            display: flex;
+            align-items: stretch;
+            background: #fff;
+            border-radius: 4px;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            padding: 0;
+        }
+        .qui .left {
+            flex: 1;
+            background: #eee;
+            border-radius: 4px 0 0 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #444;
+            padding: 24px;
+        }
+        .qui .right {
+            flex: 2;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .qui .right h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .qui .right p {
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            color: #222;
+        }
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: #222;
+            margin: 32px auto 24px auto;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 32px 0 0 0;
+            font-size: 0.95rem;
+        }
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 16px;
+        }
+        .footer-address {
+            margin-bottom: 16px;
+        }
+        .footer-address p {
+            margin: 0 0 6px 0;
+        }
+        .footer-social {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .footer-social a {
+            color: #fff;
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: #ffb300;
+        }
+        .footer-bottom {
+            text-align: center;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-top: 16px;
+            padding-bottom: 16px;
+        }
+        @media (max-width: 700px) {
+            main, .footer-content {
+                max-width: 100%;
+                padding: 0 16px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            .full {
+                grid-column: 1 / -1;
+            }
+            .collections-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .section:not(.full) {
+                grid-column: span 1;
+            }
+            .qui {
+                flex-direction: row;
+            }
+            .qui .left, .qui .right {
+                border-radius: 4px;
+                min-height: auto;
+                padding: 12px;
+            }
+            .qui .left {
+                font-size: 0.9rem;
+                padding: 12px;
+            }
+            .qui .right {
+                padding: 12px;
+            }
+            .qui .right h2 {
+                font-size: 1.2rem;
+                margin-bottom: 4px;
+            }
+            .qui .right p {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            header {
+                padding: 16px;
+            }
+            .logo {
+                font-size: 1.2rem;
+            }
+            .logo img {
+                height: 24px;
+            }
+            .section .title {
+                font-size: 1.2rem;
+                padding: 12px 16px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 701px) and (max-width: 1024px) {
+            main, .footer-content {
+                max-width: 800px;
+                padding: 0 24px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .full {
+                grid-column: 1 / -1;
+            }
+            .collections-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .section img {
+                height: 220px;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .section img {
+                height: 250px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .full {
+                grid-column: 1 / -1;
+            }
+            .collections-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section img {
+                height: 160px;
+            }
+            .qui .right h2 {
+                font-size: 1.3rem;
+            }
+            .qui .right p {
+                font-size: 0.9rem;
+            }
+            .footer-address p {
+                font-size: 0.9rem;
+            }
+            .footer-bottom {
+                font-size: 0.7rem;
+            }
+        }
+        .menu-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #fff;
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .menu-overlay.open {
+            display: flex;
+        }
+        .menu-header {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 24px 0 24px;
+        }
+        .close-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .menu-logo img {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .menu-search {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: -12px;
+        }
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 36px 0 32px 0;
+            width: 100%;
+        }
+        .menu-links a {
+            color: #222;
+            text-decoration: none;
+            font-size: 1.08rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin: 10px 0;
+            transition: color 0.2s;
+        }
+        .menu-links a:hover {
+            color: #ffb300;
+        }
+        .menu-socials {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0 24px 0;
+            flex-wrap: wrap;
+        }
+        .menu-socials a {
+            color: #222;
+            font-size: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        .menu-address {
+            text-align: center;
+            color: #222;
+            font-size: 0.97rem;
+            margin-bottom: 18px;
+        }
+        .menu-address-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .menu-footer {
+            text-align: center;
+            color: #bbb;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        @media (max-width: 700px) {
+            .menu-header {
+                padding: 16px 12px 0 12px;
+            }
+            .menu-logo img {
+                height: 28px;
+                width: 28px;
+            }
+            .menu-links a {
+                font-size: 0.98rem;
+            }
+            .menu-socials {
+                gap: 18px;
+            }
+            .menu-footer {
+                font-size: 0.7rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .menu-footer {
+                font-size: 0.6rem;
+            }
+        }
+        #a{
+            border: none;
+            border-color: none;
+            -webkit-user-select: none;
+        }
+        .close-icon {
+            margin-left: 15px;
+        }
+        .menu-socials a{
+            font-size: 12px;
+        }
+        .menu-socials{
+            margin-top: 5px;
+        }
+        .collections-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            width: 100%;
+        }
+/* #i{ 
+    height: 20px;
+} */
+    </style>
+    <!-- Icônes FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <span class="menu-icon" id="openMenu"><i class="fas fa-bars"></i></span>
+        <span class="logo"><img src="kitendilogo[1].png" alt="Kitendi Logo" style="height:28px;vertical-align:middle;">KITENDI</span>
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+    </header>
+    <!-- MENU OVERLAY -->
+    <div id="menuOverlay" class="menu-overlay">
+        <div class="menu-header">
+            <span class="close-icon" id="closeMenu"><i class="fas fa-times"></i></span>
+            <span class="menu-logo"><img src="kitendilogo[1].png" alt="Kitendi Logo"></span>
+<i class="fas fa-search"></i>
+        </div>
+        <nav class="menu-links">
+            <a href="#">ACCUEIL</a>
+            <a href="menu-catalogue.html">CATALOGUE</a>
+            <a href="#">COLLECTION HOMME</a>
+            <a href="#">COLLECTION FEMME</a>
+            <a href="#">COLLECTION ENFANTS</a>
+            <a href="#">NOUVEAUTÉ</a>
+            <a href="#">ACCESSOIRES</a>
+            <a href="#">SHIRT | PERSONNALISABLE</a>
+            <a href="#">SHIRT | NEW COLLECTION</a>
+            <a href="#">EDITION SPÉCIALE</a>
+            <a href="#">INFO +</a>
+        </nav>
+        <div class="menu-socials">
+            <a href="https://www.instagram.com/kitendi_couture?igsh=bThwaWk0bXcxZHV5&utm_source=qr">INSTAGRAM</a>
+            <a href="https://www.facebook.com/profile.php?id=100070032288416">FACEBOOK</a>
+            <a href="#">TIK TOK</a>
+            <a href="wa.me/243854349310">WHATSAPP</a>
+        </div>
+        <div class="menu-address">
+            <div class="menu-address-title">Notre adresse</div>
+            <div>Av. Patu C/Bandalungwa<br>Réf. Pharmacie - Kinshasa / RD Congo<br>Tel: +243 85 43 43 430<br>Mail: kitendicouture@gmail.com</div>
+        </div>
+        <div class="menu-footer">
+            Développé par emmanuel munyoka Terms & Conditions - Privacy<br>
+            © All Rights Reserved. Kitendi Couture.
+        </div>
+    </div>
+    <main>
+        <div class="grid">
+            <a href="#" class="full">
+                <div class="section">
+                    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80" alt="Catalogue">
+                    <div class="overlay"><span class="title">CATALOGUE</span></div>
+                </div>
+            </a>
+            <div class="collections-row">
+                <a href="#">
+                    <div class="section" id="i">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Femme">
+                        <div class="overlay"><span class="title">COLLECTION FEMME</span></div>
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="section greyed" id="i">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Homme">
+                        <div class="overlay"><span class="title">COLLECTION HOMME</span></div>
+                    </div>
+                </a>
+            </div>
+            <a href="#">
+                <div class="section">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Enfant">
+                    <div class="overlay"><span class="title">COLLECTION ENFANT</span></div>
+                </div>
+            </a>
+ 
+        </div>
+       
+        <div class="divider"></div>
+        <div class="qui">
+            <div class="left">
+                <span>NOUVEAUTÉS</span>
+            </div>
+            <div class="right">
+                <h2>Qui sommes-nous</h2>
+                <p>Nous produisons et vendons des vêtements 100% congolais.</p>
+                <p>Notre objectif est de valoriser la culture africaine à travers notre marque.</p>
+                <button onclick="window.location.href='catalogue.html'" style="margin-top: 20px; padding: 10px 20px; background-color: #222; color: white; border: none; border-radius: 4px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 500;">
+                    Voir nos produits
+                </button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-address">
+                <p>Av. Patru C/Bandalungwa</p>
+                <p>Réf Pharmacie - Kinshasa / RD Congo</p>
+                <p>Tel: +243 85-43-43-430</p>
+                <p>Mail: kitendicouture@gmail.com</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/kitendi_couture?igsh=bThwaWk0bXcxZHV5&utm_source=qr"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100070032288416"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="wa.me/243854349310"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Développé par emmanuel_munyoka Terms & Conditions - Privacy<br>
+            © All Rights Reserved. Kitendi Couture.
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('openMenu').onclick = function() {
+                document.getElementById('menuOverlay').classList.add('open');
+            };
+            document.getElementById('closeMenu').onclick = function() {
+                document.getElementById('menuOverlay').classList.remove('open');
+            };
+        });
+    </script>
+</body>
+</html> 
