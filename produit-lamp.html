@@ -253,7 +253,7 @@
                 envoyer.textContent = 'Envoi en cours...';
                 envoyer.disabled = true;
                 
-                const response = await fetch('http://localhost:1200/send-email', {
+                const response = await fetch('https://serveurkitendi.onrender.com/send-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
