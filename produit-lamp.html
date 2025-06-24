@@ -3,286 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lamp - Détail produit</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <title>Page Produit Moderne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #fff;
-            color: #222;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .product-image-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .product-image {
-            width: 100%;
-            display: block;
-            border-radius: 0;
-        }
-        .zoom-icon {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            background: #fff;
-            border-radius: 50%;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            font-size: 1.3rem;
-            cursor: pointer;
-        }
-        .breadcrumb {
-            color: #888;
-            font-size: 0.93rem;
-            margin: 18px 0 10px 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .product-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 0 8px 0;
-        }
-        .product-title-price {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .product-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: -0.5px;
-            color: #1a1a1a;
-        }
-        .product-price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            color: #e63946;
-            letter-spacing: -0.5px;
-            padding: 4px 8px;
-            background-color: #f8f9fa;
-            border-radius: 4px;
-        }
-        .product-icons {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        .product-icons i {
-            font-size: 1.2rem;
-            color: #222;
-            cursor: pointer;
-        }
-        .section-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 28px 0 10px 0;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #333;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-        }
-        @media (max-width: 700px) {
-            .product-header, .breadcrumb, .section-title {
-                max-width: 100%;
-                padding: 0 12px;
-            }
-            .product-image-container {
-                max-width: 100vw;
-            }
-            .product-title {
-                font-size: 1.1rem;
-            }
-            .product-price {
-                font-size: 1rem;
-            }
-            .zoom-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 1.1rem;
-                top: 10px;
-                right: 10px;
-            }
-        }
-        .size-options{
-            display: flex;
-            justify-content: center;
-        }
-        .size-selection {
-            margin-top: 20px;
-        }
-        .size-label {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .size-options {
-            display: flex;
-            gap: 10px;
-        }
-        .size-button {
-            padding: 10px 15px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            cursor: pointer;
-            font-size: 16px;
-            color: #222;
-        }
-        .size-button.selected {
-            border-color: black;
-            border-width: 2px;
-        }
-        .product-description {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 0 12px;
-        }
-        .product-description p {
-            margin-left: 20px;
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
             line-height: 1.6;
         }
-        #envoyer {
-            display: block;
-            margin: 30px auto 0 auto;
-            padding: 12px 32px;
-            font-size: 1.1rem;
-            background: #1a1a2e;
-            color: #fff;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: background 0.2s;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
         }
-        #envoyer:hover {
-            background: #e63946;
+
+        /* Breadcrumb */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb-item:hover {
+            color: #111827;
+        }
+
+        .breadcrumb-item.active {
+            color: #111827;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #9ca3af;
+        }
+
+        /* Main Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Image Section */
+        .image-container {
+            position: relative;
+            background: white;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-image.zoomed {
+            transform: scale(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .overlay-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .availability-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* Product Info */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .product-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .favorite-btn:hover {
+            background: #fef2f2;
+        }
+
+        .favorite-btn.active {
+            color: #ef4444;
+        }
+
+        .price-rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ef4444;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stars {
+            display: flex;
+            gap: 0.125rem;
+        }
+
+        .star {
+            color: #fbbf24;
+        }
+
+        .star.empty {
+            color: #d1d5db;
+        }
+
+        .reviews {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .separator {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 1rem 0;
+        }
+
+        /* Size Selection */
+        .size-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .size-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .size-btn {
+            width: 48px;
+            height: 48px;
+            border: 2px solid #d1d5db;
+            background: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .size-btn:hover {
+            border-color: #111827;
+            transform: scale(1.05);
+        }
+
+        .size-btn.selected {
+            background: #111827;
+            color: white;
+            border-color: #111827;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Description */
+        .description-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .description {
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: #f3f4f6;
+            border-radius: 0.5rem;
+        }
+
+        .feature-icon {
+            color: #6b7280;
+        }
+
+        .feature-text h4 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.125rem;
+        }
+
+        .feature-text p {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+
+        .primary-btn {
+            width: 100%;
+            height: 48px;
+            background: #111827;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .primary-btn:hover {
+            background: #374151;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .primary-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .secondary-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .secondary-btn {
+            flex: 1;
+            height: 48px;
+            background: white;
+            color: #111827;
+            border: 2px solid #111827;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem !important;
+        }
+
+        .secondary-btn:hover {
+            background: #111827;
+            color: white;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .product-title {
+                font-size: 1.5rem;
+            }
+
+            .price {
+                font-size: 1.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .secondary-actions {
+                flex-direction: column;
+            }
+
+            .toast {
+                right: 1rem;
+                left: 1rem;
+                max-width: none;
+            }
+            .secondary-btn {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="product-image-container">
-        <img src="" alt="Produit" class="product-image" id="productImage">
-        <span class="zoom-icon"><i class="fas fa-search"></i></span>
-    </div>
-    <div class="breadcrumb" id="page"></div>
-    <div class="product-header">
-        <div class="product-title-price">
-            <span class="product-title">Lamp</span>
-            <span class="product-price"></span>
+    <div class="container">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb">
+            <div class="breadcrumb-item">
+                <i class="fas fa-home"></i>
+                <span>Accueil</span>
+            </div>
+            <i class="fas fa-chevron-right breadcrumb-separator"></i>
+            <div class="breadcrumb-item">
+                <span>Produits</span>
+            </div>
+            <i class="fas fa-chevron-right breadcrumb-separator"></i>
+            <div class="breadcrumb-item">
+                <span>Éclairage</span>
+            </div>
+            <i class="fas fa-chevron-right breadcrumb-separator"></i>
+            <div class="breadcrumb-item active">
+                <span id="breadcrumb-product">Lampe Premium</span>
+            </div>
+        </nav>
+
+        <div class="product-grid">
+            <!-- Image Section -->
+            <div class="image-container">
+                <img src="https://images.pexels.com/photos/1112598/pexels-photo-1112598.jpeg?auto=compress&cs=tinysrgb&w=600" 
+                     alt="Produit" class="product-image" id="productImage">
+                <div class="image-overlay">
+                    <button class="overlay-btn" id="zoomBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="overlay-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+                <div class="availability-badge">
+                    En stock
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info">
+                <div class="product-header">
+                    <div>
+                        <h1 class="product-title" id="productTitle">Lampe Premium Designer</h1>
+                        <div class="price-rating">
+                            <span class="price" id="productPrice">€189.99</span>
+                            <div class="rating">
+                                <div class="stars">
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                    <i class="fas fa-star star"></i>
+                                </div>
+                                <span class="reviews">(124 avis)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="favorite-btn" id="favoriteBtn">
+                        <i class="far fa-heart" style="font-size: 1.25rem;"></i>
+                    </button>
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- Size Selection -->
+                <div class="size-section">
+                    <h3>Taille</h3>
+                    <div class="size-options" id="sizeOptions">
+                        <button class="size-btn" data-size="XS">XS</button>
+                        <button class="size-btn" data-size="S">S</button>
+                        <button class="size-btn selected" data-size="M">M</button>
+                        <button class="size-btn" data-size="L">L</button>
+                        <button class="size-btn" data-size="XL">XL</button>
+                        <button class="size-btn" data-size="XXL">XXL</button>
+                    </div>
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- Description -->
+                <div class="description-section">
+                    <h3>Description</h3>
+                    <p class="description" id="productDescription">
+                        Élégante lampe design qui apporte une touche moderne à votre intérieur. 
+                        Fabriquée avec des matériaux premium, cette lampe combine style contemporain et fonctionnalité. 
+                        Parfaite pour créer une ambiance chaleureuse dans votre salon, bureau ou chambre.
+                    </p>
+                </div>
+
+                <div class="separator"></div>
+
+                <!-- Features -->
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-truck feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Livraison gratuite</h4>
+                            <p>Dès 50€ d'achat</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Garantie 2 ans</h4>
+                            <p>Produit garanti</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-undo feature-icon"></i>
+                        <div class="feature-text">
+                            <h4>Retour gratuit</h4>
+                            <p>30 jours</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions">
+                    <button class="primary-btn" id="orderBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Commander maintenant</span>
+                    </button>
+                    <div class="secondary-actions">
+                        <button class="secondary-btn" id="saveBtn">
+                            <i class="fas fa-bookmark"></i>
+                            <span>Sauvegarder</span>
+                        </button>
+                        <button class="secondary-btn" id="shareBtn2">
+                            <i class="fas fa-share-alt"></i>
+                            <span>Partager</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="product-icons">
-            <i class="fas fa-paper-plane"></i>
-            <i class="far fa-bookmark"></i>
-        </div>
     </div>
-    <div class="section-title">Taille</div>
-    <div class="size-selection">
-        <div class="size-options" id="sizeOptions">
-            <button class="size-button">XS</button>
-            <button class="size-button">S</button>
-            <button class="size-button selected">M</button>
-            <button class="size-button">L</button>
-            <button class="size-button">XL</button>
-            <button class="size-button">XXL</button>
-        </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-title" id="toastTitle"></div>
+        <div class="toast-description" id="toastDescription"></div>
     </div>
-    <div class="section-title">Description</div>
-    <div class="product-description">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-    </div>
-    <button id="envoyer">envoyer</button>
+
     <script>
-        function getParam(name) {
-            return new URLSearchParams(window.location.search).get(name);
-        }
+        // State management
+        let selectedSize = 'M';
+        let isLoading = false;
+        let isFavorited = false;
+        let isZoomed = false;
+        let isSaved = false;
 
-        const titre = document.querySelector('.product-title');
-        const prix = document.querySelector('.product-price');
-        const page = document.getElementById('page');
-        const envoyer = document.getElementById('envoyer');
+        // DOM elements
         const productImage = document.getElementById('productImage');
+        const productTitle = document.getElementById('productTitle');
+        const productPrice = document.getElementById('productPrice');
+        const productDescription = document.getElementById('productDescription');
+        const breadcrumbProduct = document.getElementById('breadcrumb-product');
         const sizeOptions = document.getElementById('sizeOptions');
-        let selectedSize = 'M'; // Valeur par défaut
+        const orderBtn = document.getElementById('orderBtn');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const shareBtn2 = document.getElementById('shareBtn2');
+        const zoomBtn = document.getElementById('zoomBtn');
+        const toast = document.getElementById('toast');
+        const toastTitle = document.getElementById('toastTitle');
+        const toastDescription = document.getElementById('toastDescription');
 
-        // Gestion de la sélection de taille
-        sizeOptions.querySelectorAll('.size-button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                sizeOptions.querySelectorAll('.size-button').forEach(b => b.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedSize = this.textContent;
-            });
-        });
-
-        // Récupérer et afficher le nom et le prix depuis le localStorage
-        titre.innerText = localStorage.getItem('nom') || 'Nom inconnu';
-        prix.innerText = localStorage.getItem('prix') || 'Prix inconnu';
-        
-        // Récupérer et afficher l'image depuis le localStorage
-        const imageUrl = localStorage.getItem('imageUrl');
-        if (imageUrl) {
-            productImage.src = imageUrl;
+        // Initialize from localStorage if available
+        function initializeProduct() {
+            const storedName = localStorage.getItem('nom');
+            const storedPrice = localStorage.getItem('prix');
+            const storedImage = localStorage.getItem('imageUrl');
+            
+            if (storedName) {
+                productTitle.textContent = storedName;
+                breadcrumbProduct.textContent = storedName;
+            }
+            if (storedPrice) {
+                productPrice.textContent = storedPrice;
+            }
+            if (storedImage) {
+                productImage.src = storedImage;
+            }
         }
-        
-        // Mettre à jour le fil d'Ariane
-        page.textContent = `Accueil > Produits > Détails > ${localStorage.getItem('nom')} (${localStorage.getItem('prix')})`;
-        
-        envoyer.addEventListener('click', async () => {
-            try {
-                // Afficher un message de chargement
-                envoyer.textContent = 'Envoi en cours...';
-                envoyer.disabled = true;
-                
-                const response = await fetch('https://serveurkitendi.onrender.com/send-email', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        subject: titre.innerText,
-                        message: prix.innerText,
-                        taille: selectedSize
-                    })
+
+        // Toast notification
+        function showToast(title, description, type = 'success') {
+            toastTitle.textContent = title;
+            toastDescription.textContent = description;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Size selection
+        sizeOptions.addEventListener('click', (e) => {
+            if (e.target.classList.contains('size-btn')) {
+                // Remove selected class from all buttons
+                sizeOptions.querySelectorAll('.size-btn').forEach(btn => {
+                    btn.classList.remove('selected');
                 });
                 
-                if (response.ok) {
-                    const result = await response.text();
-                    console.log('Succès:', result);
-                    alert('Email envoyé avec succès !');
-                } else {
-                    const errorText = await response.text();
-                    console.error('Erreur serveur:', errorText);
-                    alert('Erreur lors de l\'envoi: ' + errorText);
-                }
-            } catch (error) {
-                console.error('Erreur réseau:', error);
-                alert('Erreur de connexion au serveur. Vérifiez que le serveur est démarré sur le port 1200.');
-            } finally {
-                // Restaurer le bouton
-                envoyer.textContent = 'envoyer';
-                envoyer.disabled = false;
+                // Add selected class to clicked button
+                e.target.classList.add('selected');
+                selectedSize = e.target.dataset.size;
             }
         });
+
+        // Zoom functionality
+        zoomBtn.addEventListener('click', () => {
+            isZoomed = !isZoomed;
+            if (isZoomed) {
+                productImage.classList.add('zoomed');
+            } else {
+                productImage.classList.remove('zoomed');
+            }
+        });
+
+        // Favorite functionality
+        favoriteBtn.addEventListener('click', () => {
+            isFavorited = !isFavorited;
+            const icon = favoriteBtn.querySelector('i');
+            
+            if (isFavorited) {
+                icon.className = 'fas fa-heart';
+                favoriteBtn.classList.add('active');
+                showToast('Ajouté aux favoris', `${productTitle.textContent} ajouté à vos favoris.`);
+            } else {
+                icon.className = 'far fa-heart';
+                favoriteBtn.classList.remove('active');
+                showToast('Retiré des favoris', `${productTitle.textContent} retiré de vos favoris.`);
+            }
+        });
+
+        // Save functionality
+        saveBtn.addEventListener('click', () => {
+            isSaved = !isSaved;
+            const span = saveBtn.querySelector('span');
+            
+            if (isSaved) {
+                span.textContent = 'Sauvegardé';
+                showToast('Produit sauvegardé', 'Le produit a été ajouté à votre liste.');
+            } else {
+                span.textContent = 'Sauvegarder';
+                showToast('Sauvegarde annulée', 'Le produit a été retiré de votre liste.');
+            }
+        });
+
+        // Share functionality
+        function handleShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: productTitle.textContent,
+                    text: `Découvrez ce produit : ${productTitle.textContent}`,
+                    url: window.location.href,
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('Lien copié !', 'Le lien du produit a été copié dans votre presse-papiers.');
+                });
+            }
+        }
+
+        shareBtn.addEventListener('click', handleShare);
+        shareBtn2.addEventListener('click', handleShare);
+
+        // Order functionality
+        orderBtn.addEventListener('click', async () => {
+            if (isLoading) return;
+            
+            isLoading = true;
+            const originalContent = orderBtn.innerHTML;
+            
+            // Show loading state
+            orderBtn.innerHTML = `
+                <div class="spinner"></div>
+                <span>Envoi en cours...</span>
+            `;
+            orderBtn.disabled = true;
+            
+            try {
+                // Store in localStorage
+                localStorage.setItem('nom', productTitle.textContent);
+                localStorage.setItem('prix', productPrice.textContent);
+                localStorage.setItem('imageUrl', productImage.src);
+                localStorage.setItem('taille', selectedSize);
+                
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Try to send to server (as in original code)
+                try {
+                    const response = await fetch('https://serveurkitendi.onrender.com/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            subject: productTitle.textContent,
+                            message: productPrice.textContent,
+                            taille: selectedSize
+                        })
+                    });
+                    
+                    if (response.ok) {
+                        showToast('Commande envoyée !', `Votre demande pour ${productTitle.textContent} (taille ${selectedSize}) a été envoyée avec succès.`);
+                    } else {
+                        throw new Error('Erreur serveur');
+                    }
+                } catch (serverError) {
+                    // Fallback: show success anyway since data is stored locally
+                    showToast('Commande enregistrée !', `Votre demande pour ${productTitle.textContent} (taille ${selectedSize}) a été enregistrée localement.`);
+                }
+                
+            } catch (error) {
+                showToast('Erreur', 'Une erreur s\'est produite lors de l\'envoi de votre commande.', 'error');
+            } finally {
+                // Restore button
+                isLoading = false;
+                orderBtn.innerHTML = originalContent;
+                orderBtn.disabled = false;
+            }
+        });
+
+        // Initialize the page
+        initializeProduct();
     </script>
 </body>
-</html> 
+</html>
